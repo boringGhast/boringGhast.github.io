@@ -66,7 +66,7 @@ body {
 header {
   position: fixed;
   top: 20px;
-  left: 1.25%;
+  left: 2.5%;
   right: 2.5%;
   width: 95vw;
   height: 70px;
@@ -202,6 +202,8 @@ section {
   position: relative;
   top: -330px;
   padding-bottom: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
   width: 85vw;
   z-index: 1;
   margin-left: auto;
@@ -233,10 +235,36 @@ section p {
   line-height: 35px;
 }
 
-#copyright {
-  position: relative;
-  bottom: 15px;
+p#copyright {
   width: 20ch;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 440px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 120px;
+  }
+  header img {
+    position: relative;
+    top: 9px;
+    left: 0;
+  }
+  header div {
+    position: relative;
+    top: 13px;
+    left: 0;
+  }
+  .text p2:nth-last-child(2) {
+    position: relative;
+    left: 50px;
+  }
+  .text p:nth-last-child(2) {
+    position: relative;
+    left: -15px;
+  }
 }
