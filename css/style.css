@@ -3,23 +3,13 @@
   margin: 0;
 }
 
-a {
-  color: #acacac;
-  font-size: 1.2em;
-  text-decoration: none;
-}
-
 body {
-  position: relative;
-  align-items: center;
   min-height: 100vh;
   background-color: rgb(153, 153, 153);
-  overflow: hidden;
+  overflow-y: auto;
 }
 
-.waves,
-.waves2 {
-  content: "";
+.mask {
   position: fixed;
   left: 50%;
   min-width: 300vw;
@@ -31,13 +21,13 @@ body {
   z-index: -1;
 }
 
-.waves {
+.mask:nth-child(1) {
   bottom: 15vh;
   border-radius: 45%;
   animation-duration: 12s;
 }
 
-.waves2 {
+.mask:nth-child(2) {
   bottom: 10vh;
   opacity: 0.5;
   border-radius: 47%;
@@ -56,42 +46,48 @@ body {
   }
 }
 
+/* 内容容器 */
 #ful {
   width: 100vw;
   height: 100vh;
-  padding-top: 30px;
-  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
+/* 顶部 */
 header {
+  /* 垂直居中 */
+  display: flex;
+  align-items: center;
+  /* 不随页面滚动 */
   position: fixed;
-  top: 20px;
+  top: 30px;
   left: 2.5%;
   right: 2.5%;
   width: 95vw;
   height: 70px;
-  border-radius: 54px;
+  border-radius: 35px;
   background: #7d7d7d;
   box-shadow: -0px -8px 15px #464646, 0px 8px 10px #7a7a7a;
-  display: flex;
-  align-items: center;
-  z-index: 10;
+  z-index: 4;
 }
 
 header img {
-  border-radius: 50%;
   position: relative;
   top: 1px;
   left: 40px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   box-shadow: -2px -4px 10px #565656, 2px 3px 3px #9a9a9a;
 }
 
 header div {
-  margin-left: auto;
-  margin-right: auto;
   display: flex;
   position: relative;
   left: -27px;
+  /* 居中 */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 header div p {
@@ -107,59 +103,23 @@ header div p:nth-last-child(1) {
   margin-right: 0px;
 }
 
-.circle {
-  margin-left: auto;
-  margin-right: auto;
+/* 月亮 */
+.moon {
   position: relative;
   top: 180px;
+  margin-left: auto;
+  margin-right: auto;
   width: 200px;
   height: 200px;
   border-radius: 50%;
   background-color: #54bcde;
   box-shadow: 0px 0px 35px #5fd7ff;
-  animation-name: color;
+  animation-name: shadow;
   animation-duration: 4s;
   animation-iteration-count: infinite;
-  overflow: hidden;
-  z-index: 0;
 }
 
-.circle ~ .text {
-  white-space: nowrap;
-  border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  overflow: hidden;
-  position: relative;
-  top: -20px;
-  left: 0;
-  color: #365867;
-  font-size: 45px;
-  z-index: 9;
-  text-shadow: inset 0px 0px 5px #5fd7ff;
-}
-
-.circle ~ .text p {
-  width: 270px;
-  position: relative;
-  top: 110px;
-  left: -65px;
-  background-image: linear-gradient(
-    to bottom,
-    rgb(154, 215, 255),
-    rgb(41, 114, 150)
-  );
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.circle ~ .text p:nth-last-child(1) {
-  position: relative;
-  left: -14.5px;
-  background-image: linear-gradient(to bottom, rgb(41, 114, 150), #999999);
-}
-
-@keyframes color {
+@keyframes shadow {
   0% {
     box-shadow: 0px 0px 35px #5fd7ff;
   }
@@ -168,20 +128,7 @@ header div p:nth-last-child(1) {
   }
 }
 
-svg.bi-search {
-  color: #444444;
-  width: 30px;
-  height: 30px;
-  position: relative;
-  left: -1%;
-}
-
 .text {
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  top: -110px;
-  left: -30px;
   width: 270px;
   height: 200px;
   font-size: 45px;
@@ -191,30 +138,73 @@ svg.bi-search {
   font-weight: 800;
 }
 
-.text p2:nth-last-child(1) {
+welcome > .text {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  top: -110px;
+  left: -30px;
+}
+
+welcome .text p:nth-child(2) {
   position: relative;
   left: 50px;
 }
 
+.moon ~ .text {
+  margin: 0 auto 0 auto;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: relative;
+  top: -20px;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.moon ~ .text p {
+  position: relative;
+  top: 110px;
+  left: -65px;
+  width: 270px;
+  /* 文字渐变 */
+  color: transparent;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(154, 215, 255),
+    rgb(41, 114, 150)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.moon ~ .text p:nth-last-child(1) {
+  position: relative;
+  left: -15px;
+  background-image: linear-gradient(to bottom, rgb(41, 114, 150), #999999);
+}
+
+/* 内容 */
 section {
   display: flex;
   flex-direction: column;
-  position: relative;
-  top: -330px;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
   padding-bottom: 30px;
   padding-left: 20px;
   padding-right: 20px;
+  position: relative;
+  top: -330px;
   width: 85vw;
-  z-index: 1;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 1.4em;
-  /* 毛玻璃 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
   border-radius: 37px;
+  font-size: 1.4em;
+  z-index: 1;
+  gap: 20px;
+}
+
+/* 毛玻璃 */
+section {
   backdrop-filter: blur(12px);
   background-color: rgba(189, 189, 189, 0.06);
   box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px;
@@ -228,13 +218,17 @@ section#first {
 }
 
 section p {
-  margin-left: auto;
-  margin-right: auto;
   color: #bcbcbc;
   font-weight: 400;
-  line-height: 35px;
 }
 
+a {
+  color: #acacac;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+/* 版权声明 */
 p#copyright {
   width: 20ch;
   margin-left: auto;
@@ -242,6 +236,7 @@ p#copyright {
   margin-bottom: 20px;
 }
 
+/* 响应式 */
 @media (max-width: 440px) {
   header {
     display: flex;
@@ -259,11 +254,11 @@ p#copyright {
     top: 13px;
     left: 0;
   }
-  .text p2:nth-last-child(2) {
+  welcome .text p:nth-child(1) {
     position: relative;
     left: 50px;
   }
-  .text p:nth-last-child(2) {
+  .text p:nth-child(1) {
     position: relative;
     left: -15px;
   }
