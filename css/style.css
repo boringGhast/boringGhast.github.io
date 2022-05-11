@@ -46,6 +46,31 @@ body {
   }
 }
 
+/* 滚动条样式 */
+/* 滚动条宽度 */
+::-webkit-scrollbar {
+  width: 5px;
+  height: auto;
+}
+/* 滚动槽背景色 */
+::-webkit-scrollbar-track {
+  margin-right: 5px;
+  background-color: transparent;
+}
+/* 滚动条样式 */
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #00000055;
+}
+/* 滚动条hover颜色 */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #00000077;
+}
+/* 滚动条active颜色 */
+::-webkit-scrollbar-thumb:active {
+  background-color: #00000099;
+}
+
 /* 内容容器 */
 #ful {
   width: 100vw;
@@ -234,6 +259,17 @@ p#copyright {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
+}
+
+#fHref {
+  width: 19ch;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#fHref a {
+  color: black;
+  font-size: 1em;
 }
 
 /* 响应式 */
