@@ -321,7 +321,7 @@ ul li:hover > button::after {
   }
 }
 
-#add {
+.add {
   width: 50px;
   min-height: 50px;
   background-color: #f0c786;
